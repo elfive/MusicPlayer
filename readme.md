@@ -17,7 +17,7 @@ NOTE:
 你可以任意使用本工程中的代码而不受到约束，但是我不保证代码不会有bug，而且我也不会对因为这个bug造成的d后果负责。  
 
 提示：  
-1、 这是一个基于libzplay的很简单的demo，你可以在http://libzplay.sourceforge.net/download.html这里找到最新版的libzplay代码；  
+1、 这是一个基于libzplay的很简单的demo，你可以在 http://libzplay.sourceforge.net/download.html 这里找到最新版的libzplay代码；  
 2、 这是一个Visual Studio 2015版的工程，你可能不能在其他版本的VS编辑器中正确打开这个工程；  
 3、 你可以拖拽单个音乐文件到对话框中以播放它，但是别拖放其他类型的文件，我没有对这个进行基本的判断和容错；  
 4、 工程中的音乐文件版权不属于我，所以切勿用于其他商业用途；  
