@@ -1,20 +1,25 @@
-A Simple Music Player based on Libzplay. Just some simple function:like play¡¢EQ¡¢tempo¡¢pitch¡¢rate.
+A Simple Music Player based on Libzplay.
+Just some simple function:like playã€EQã€tempoã€pitchã€rate.
 
-ATTENTION: you can use this code you like,but I'm not promise you there is no bug, and I am not responsible for the consequences it brings to you.
+ATTENTION:
+you can use this code you like,but I'm not promise you there is no bug, and I am not responsible for the consequences it brings to you.
 
-NOTE: 1. This is a simple demo based on libzplay,you can find the latest version of libzplay at http://libzplay.sourceforge.net/download.html; 
-2. The Project is a Visual Studio 2015 Project,you may not open it correctly on other version of VS; 
-3. you can drag music file on dialog to play,DON'T Drag other type of file(s); 
-4. The music in the demo project is NOT belongs to me,Please use it in the right way; 
-5. when downloaded this project, you just need to build and run it, I'm tested on Win7 64Bit with sp1 PC, it's works well. 
+NOTE:
+1. This is a simple demo based on libzplay,you can find the latest version of libzplay at http://libzplay.sourceforge.net/download.html;
+2. The Project is a Visual Studio 2015 Project,you may not open it correctly on other version of VS;
+3. you can drag music file on dialog to play,DON'T Drag other type of file(s);
+4. The music in the demo project is NOT belongs to me,Please use it in the right way;
+5. when downloaded this project, you just need to build and run it, I'm tested on Win7 64Bit with sp1 PC, it's works well.
 6. if you have any question, please let me know, we can work together to solve problems.
 
 
-×¢Òâ£º Äã¿ÉÒÔÈÎÒâÊ¹ÓÃ±¾¹¤³ÌÖĞµÄ´úÂë¶ø²»ÊÜµ½Ô¼Êø£¬µ«ÊÇÎÒ²»±£Ö¤´úÂë²»»áÓĞbug£¬¶øÇÒÎÒÒ²²»»á¶ÔÒòÎªÕâ¸öbugÔì³ÉµÄdºó¹û¸ºÔğ¡£
+æ³¨æ„ï¼š
+ä½ å¯ä»¥ä»»æ„ä½¿ç”¨æœ¬å·¥ç¨‹ä¸­çš„ä»£ç è€Œä¸å—åˆ°çº¦æŸï¼Œä½†æ˜¯æˆ‘ä¸ä¿è¯ä»£ç ä¸ä¼šæœ‰bugï¼Œè€Œä¸”æˆ‘ä¹Ÿä¸ä¼šå¯¹å› ä¸ºè¿™ä¸ªbugé€ æˆçš„dåæœè´Ÿè´£ã€‚
 
-ÌáÊ¾£º 1¡¢ ÕâÊÇÒ»¸ö»ùÓÚlibzplayµÄºÜ¼òµ¥µÄdemo£¬Äã¿ÉÒÔÔÚhttp://libzplay.sourceforge.net/download.htmlÕâÀïÕÒµ½×îĞÂ°æµÄlibzplay´úÂë£» 
-2¡¢ ÕâÊÇÒ»¸öVisual Studio 2015°æµÄ¹¤³Ì£¬Äã¿ÉÄÜ²»ÄÜÔÚÆäËû°æ±¾µÄVS±à¼­Æ÷ÖĞÕıÈ·´ò¿ªÕâ¸ö¹¤³Ì£» 
-3¡¢ Äã¿ÉÒÔÍÏ×§µ¥¸öÒôÀÖÎÄ¼şµ½¶Ô»°¿òÖĞÒÔ²¥·ÅËü£¬µ«ÊÇ±ğÍÏ·ÅÆäËûÀàĞÍµÄÎÄ¼ş£¬ÎÒÃ»ÓĞ¶ÔÕâ¸ö½øĞĞ»ù±¾µÄÅĞ¶ÏºÍÈİ´í£» 
-4¡¢ ¹¤³ÌÖĞµÄÒôÀÖÎÄ¼ş°æÈ¨²»ÊôÓÚÎÒ£¬ËùÒÔÇĞÎğÓÃÓÚÆäËûÉÌÒµÓÃÍ¾£» 
-5¡¢ ÏÂÔØºÃ¹¤³ÌÖ®ºó£¬Ö±½Ó´ò¿ª¡¢±àÒë¡¢ÔËĞĞ¾ÍĞĞÁË£¬ÎÒÒÑ¾­ÔÚWin7 64Bit SP1ÏµÍ³ÏÂµ÷ÊÔ³É¹¦ÁË£¬²¢ÇÒÔËĞĞµÃºÜºÃ£» 
-6¡¢ Èç¹ûÓĞÈÎºÎÒÉÎÊ£¬ÇëÁªÏµÎÒ£¬ÎÒÃÇÒ»ÆğÀ´½â¾öÎÊÌâ¡£
+æç¤ºï¼š
+1ã€ è¿™æ˜¯ä¸€ä¸ªåŸºäºlibzplayçš„å¾ˆç®€å•çš„demoï¼Œä½ å¯ä»¥åœ¨http://libzplay.sourceforge.net/download.htmlè¿™é‡Œæ‰¾åˆ°æœ€æ–°ç‰ˆçš„libzplayä»£ç ï¼›
+2ã€ è¿™æ˜¯ä¸€ä¸ªVisual Studio 2015ç‰ˆçš„å·¥ç¨‹ï¼Œä½ å¯èƒ½ä¸èƒ½åœ¨å…¶ä»–ç‰ˆæœ¬çš„VSç¼–è¾‘å™¨ä¸­æ­£ç¡®æ‰“å¼€è¿™ä¸ªå·¥ç¨‹ï¼›
+3ã€ ä½ å¯ä»¥æ‹–æ‹½å•ä¸ªéŸ³ä¹æ–‡ä»¶åˆ°å¯¹è¯æ¡†ä¸­ä»¥æ’­æ”¾å®ƒï¼Œä½†æ˜¯åˆ«æ‹–æ”¾å…¶ä»–ç±»å‹çš„æ–‡ä»¶ï¼Œæˆ‘æ²¡æœ‰å¯¹è¿™ä¸ªè¿›è¡ŒåŸºæœ¬çš„åˆ¤æ–­å’Œå®¹é”™ï¼›
+4ã€ å·¥ç¨‹ä¸­çš„éŸ³ä¹æ–‡ä»¶ç‰ˆæƒä¸å±äºæˆ‘ï¼Œæ‰€ä»¥åˆ‡å‹¿ç”¨äºå…¶ä»–å•†ä¸šç”¨é€”ï¼›
+5ã€ ä¸‹è½½å¥½å·¥ç¨‹ä¹‹åï¼Œç›´æ¥æ‰“å¼€ã€ç¼–è¯‘ã€è¿è¡Œå°±è¡Œäº†ï¼Œæˆ‘å·²ç»åœ¨Win7 64Bit SP1ç³»ç»Ÿä¸‹è°ƒè¯•æˆåŠŸäº†ï¼Œå¹¶ä¸”è¿è¡Œå¾—å¾ˆå¥½ï¼›
+6ã€ å¦‚æœæœ‰ä»»ä½•ç–‘é—®ï¼Œè¯·è”ç³»æˆ‘ï¼Œæˆ‘ä»¬ä¸€èµ·æ¥è§£å†³é—®é¢˜ã€‚
