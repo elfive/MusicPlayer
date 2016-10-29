@@ -12,10 +12,10 @@ enum
 class CMusicPlayer
 {
 public:
-
-
 	CMusicPlayer();
 	~CMusicPlayer();
+	ZPlay * player;
+	TStreamStatus Status;
 
 	bool Init();
 	bool Open(const char * FilePath);
@@ -44,15 +44,13 @@ public:
 	bool isPlaying();
 	int GetStatus();
 
-	void SetEQ(int band0, int band1, int band2, int band3, int band4, int band5, int band6, int band7);
-	void SetEQ(int band[8]);
-	void RestoreEQ(int band[8]);
+	void CreateEQPoint(int EQPoint[], int PointCount);
+	void SetEQ(const int band[], int bandCount);
+	void ResetEQ();
 
 private:
-	ZPlay * player;
 	TID3InfoEx id3_info;
 	TStreamInfo pInfo;
-	TStreamStatus status;
 
 	int lVolume = 100;		//左声道音量百分比
 	int rVolume = 100;		//右声道音量百分比
@@ -66,6 +64,7 @@ private:
 	int nRate;
 	int nTempo;
 	int nPitch;
-	bool fEq;
-}; 
+	int PreviousBandCount = 8;
+	int PreviousEQEffect[8] = { 0,0,0,0,0,0,0,0 };
+};
 

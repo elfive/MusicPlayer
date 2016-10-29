@@ -197,6 +197,7 @@ copy "$(ProjectDir)HeyJude.mp3" "$(OutDir)"
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Libzplay\libzplay.h" />
     <ClInclude Include="MusicPlayer.h" />
     <ClInclude Include="Music_Player.h" />
     <ClInclude Include="Music_PlayerDlg.h" />

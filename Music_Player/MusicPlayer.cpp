@@ -1,21 +1,15 @@
 #include "stdafx.h"
 #include "MusicPlayer.h"
 
-
 CMusicPlayer::CMusicPlayer()
 {
 	isOpenedFile = false;
 	isGetID3Info = false;
 	isInited = false;
-	isSideCut = false;
-	isCenterCut = false;
-	isReverse = false;
 	nRate = 100;
 	nTempo = 100;
 	nPitch = 100;
-	fEq = false;
 }
-
 
 CMusicPlayer::~CMusicPlayer()
 {
@@ -23,8 +17,10 @@ CMusicPlayer::~CMusicPlayer()
 		player->Release();
 }
 
-bool CMusicPlayer::Init() 
+bool CMusicPlayer::Init()
 {
+	if (player != NULL)
+		player->Release();
 	player = CreateZPlay();
 	if (player == 0)
 	{
@@ -44,9 +40,10 @@ bool CMusicPlayer::Init()
 	CString VerInfo;
 	VerInfo.Format(L"libZPlay v.%i.%02i\n", ver / 100, ver % 100);
 	OutputDebugString(VerInfo);
+
 	int eq_points[7] = { 100, 400, 1000, 3000, 5000, 10000, 15000 };
-	player->SetEqualizerPoints(eq_points, 7);
-	
+	CreateEQPoint(eq_points, 7);
+	player->EnableEqualizer(false);
 	isInited = true;
 
 
@@ -119,8 +116,8 @@ bool CMusicPlayer::Play()
 {
 	if (!isOpenedFile) return false;
 	
-	player->GetStatus(&status);
-	if (status.fPlay) return true;
+	player->GetStatus(&Status);
+	if (Status.fPlay) return true;
 
 	if (player->Play() == 0) 
 	{
@@ -136,8 +133,8 @@ bool CMusicPlayer::Pause()
 {
 	if (!isOpenedFile) return false;
 
-	player->GetStatus(&status);
-	if (!status.fPlay) return true;
+	player->GetStatus(&Status);
+	if (!Status.fPlay) return true;
 
 	player->Pause();
 	return true;
@@ -147,8 +144,8 @@ bool CMusicPlayer::Resume()
 {
 	if (!isOpenedFile) return false;
 
-	player->GetStatus(&status);
-	if (status.fPlay) return true;
+	player->GetStatus(&Status);
+	if (Status.fPlay) return true;
 
 	player->Resume();
 	return true;
@@ -307,66 +304,42 @@ void CMusicPlayer::Reverse()
 
 bool CMusicPlayer::isPlaying() 
 {
-	player->GetStatus(&status);
-	if (status.fPlay) return true;
+	player->GetStatus(&Status);
+	if (Status.fPlay) return true;
 	return false;
 }
 
 int CMusicPlayer::GetStatus()
 {
-	player->GetStatus(&status);
-	if (status.fPlay) return PLAYING;
-	if (status.fPause) return PAUSE;
+	player->GetStatus(&Status);
+	if (Status.fPlay) return PLAYING;
+	if (Status.fPause) return PAUSE;
 	return STOP;
 }
 
-void CMusicPlayer::SetEQ(int band0, int band1, int band2, int band3, int band4, int band5, int band6, int band7)
+void CMusicPlayer::CreateEQPoint(int EQPoint[], int PointCount)
 {
-	fEq = true;
-
-	// enable or disable equalizer
-	player->EnableEqualizer(fEq);
-
-
-	// band0: 0 - 100 Hz
-	// band1: 100 - 400 Hz
-	// band2: 400 - 1000 Hz
-	// band3: 1000 - 3000 Hz
-	// band4: 3000 - 5000 Hz
-	// band5: 5000 - 10000 Hz
-	// band6: 10000 - 15000 Hz
-	// band7: 15000 - sr/2 Hz
-
-	if (fEq)
-	{
-		player->SetEqualizerBandGain(0, band0);
-		player->SetEqualizerBandGain(1, band1);
-		player->SetEqualizerBandGain(2, band2);
-		player->SetEqualizerBandGain(3, band3);
-		player->SetEqualizerBandGain(4, band4);
-		player->SetEqualizerBandGain(5, band5);
-		player->SetEqualizerBandGain(6, band6);
-		player->SetEqualizerBandGain(7, band7);
-	}
+	player->SetEqualizerPoints(EQPoint, PointCount);
+	PreviousBandCount = PointCount + 1;
 }
 
-void CMusicPlayer::SetEQ(int band[8])
+void CMusicPlayer::SetEQ(const int band[],int bandCount)
 {
-	fEq = true;
-	player->EnableEqualizer(fEq);
-	for (int i = 0; i < 8; i++)
+	if (PreviousBandCount != bandCount) return;
+	for (int i = 0; i < bandCount; i++)
 	{
-		player->SetEqualizerBandGain(i, band[i]);
-
+		player->SetEqualizerBandGain(i, band[i] - PreviousEQEffect[i]);
+		PreviousEQEffect[i] = band[i];
 	}
+	player->EnableEqualizer(true);
 }
 
-void CMusicPlayer::RestoreEQ(int band[8]) 
+void CMusicPlayer::ResetEQ() 
 {
-	fEq = true;
-	player->EnableEqualizer(fEq);
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < PreviousBandCount; i++)
 	{
-		player->SetEqualizerBandGain(i, 0 - band[i]);
+		player->SetEqualizerBandGain(i, 0 - PreviousEQEffect[i]);
+		PreviousEQEffect[i] = 0;
 	}
+	player->EnableEqualizer(false);
 }
