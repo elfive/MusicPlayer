@@ -209,7 +209,6 @@ void CMusic_PlayerDlg::Stop()
 {
 	Player.Stop();
 	strStatus = L"Stopped";
-	Reset();
 	m_Play.SetWindowText(L"Paly");
 	m_Play.EnableWindow(FALSE);
 	m_Stop.EnableWindow(FALSE);
@@ -473,7 +472,7 @@ void CMusic_PlayerDlg::Reset()
 {
 	InitCtlValue();
 	unsigned int volume = 100;
-	CString strStatus = L"Paused";
+	strStatus = L"Stopped";
 	m_Play.SetWindowText(L"Play");
 	m_Play.EnableWindow(FALSE);
 	m_Stop.EnableWindow(FALSE);
@@ -508,6 +507,9 @@ int __stdcall CMusic_PlayerDlg::StopdPlayerCallback(void* instance, void *user_d
 		pSelf->m_FileList.SetItemState(pSelf->SelectedItme, LVIS_SELECTED | LVIS_FOCUSED, LVIS_SELECTED | LVIS_FOCUSED);
 		pSelf->PlayListItem(pSelf->SelectedItme);
 	}
+	CString Msg;
+	Msg.Format(L"finish %s", __FUNCTION__);
+	OutputDebugString(Msg);
 	return 0;
 }
 
@@ -530,8 +532,27 @@ void CMusic_PlayerDlg::PlayListItem(int index)
 	CT2CA pszConvertedAnsiString(path);
 	string strPath(pszConvertedAnsiString);
 	Player.Stop();
+	int count = m_FileList.GetItemCount();
+	Player.player->Close();
 	Player.Open(strPath.c_str());
 	Play();
+	if (count != 0)
+	{
+		for (int i = index; i < count; i++)
+		{
+			CString path = m_FileList.GetItemText(i, 0);
+			CT2CA pszConvertedAnsiString(path);
+			string strPath(pszConvertedAnsiString);
+			Player.player->AddFile(strPath.c_str(), sfAutodetect);
+		}
+		for (int i = 0; i < index; i++)
+		{
+			CString path = m_FileList.GetItemText(i, 0);
+			CT2CA pszConvertedAnsiString(path);
+			string strPath(pszConvertedAnsiString);
+			Player.player->AddFile(strPath.c_str(), sfAutodetect);
+		}
+	}
 	m_Play.EnableWindow(TRUE);
 }
 
